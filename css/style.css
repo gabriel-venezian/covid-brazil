@@ -163,14 +163,39 @@ body {
 /**********************************/
 /* 4. Container
 /**********************************/
-
-
+.container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 3rem;
+    margin: 3rem 1.6rem;
+}
 
 /**********************************/
 /* 5. State Select
 /**********************************/
+.state-select {
+    font: var(--ts-normal-semibold);
+    background-color: var(--clr-card);
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    border-radius: .5rem;
+}
 
+.state-select-toggle {
+    padding: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
 
+.state-select-toggle__icon {
+    transition: var(--transition);
+}
+
+.state-select-toggle__icon--rotate {
+    transform: rotate(180deg);
+}
 
 /**********************************/
 /* 6. Status
