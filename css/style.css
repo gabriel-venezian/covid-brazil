@@ -179,6 +179,7 @@ body {
     transition: var(--transition);
     box-shadow: var(--shadow-card);
     border-radius: .5rem;
+    position: relative;
 }
 
 .state-select-toggle {
@@ -195,6 +196,59 @@ body {
 
 .state-select-toggle__icon--rotate {
     transform: rotate(180deg);
+}
+
+.state-select-list {
+    max-height: 30rem;
+    overflow-y: scroll;
+    border-radius: .5rem;
+    padding: 1.6rem;
+    position: absolute;
+    width: 100%;
+    background-color: var(--clr-card);
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    top: calc(100% + 1.5rem);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.state-select-list--show {
+    visibility: visible;
+    opacity: 1;
+    top: calc(100% + .75rem);
+}
+
+.state-select-list__search {
+    background-color: var(--clr-background);
+    transition: var(--transition);
+    color: var(--clr-font);
+    padding: 1.2rem;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.state-select-list__search::placeholder {
+    color: var(--clr-font);
+    opacity: .6;
+    transition: var(--transition);
+}
+
+.state-select-list__item {
+    padding: 1.6rem;
+    color: var(--clr-link);
+    cursor: pointer;
+}
+
+.state-select-list__item:hover {
+    color: var(--clr-card);
+    background-color: var(--clr-link);
+}
+
+.state-select-list__item--hide {
+    display: none;
 }
 
 /**********************************/
