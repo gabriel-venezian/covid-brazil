@@ -299,7 +299,15 @@ section {
 /**********************************/
 /* 7. Data Box
 /**********************************/
+.data-box__header {
+    font: var(--ts-caption);
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+}
 
+.data-box__description {
+    font: var(--ts-normal-text);
+}
 
 /**********************************/
 /* 8. Footer
