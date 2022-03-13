@@ -84,6 +84,23 @@ section {
     border-radius: .5rem;
 }
 
+footer {
+    background: var(--clr-card);
+    transition: var(--transition);
+    font: var(--ts-normal-semibold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 19rem;
+    text-align: center;
+}
+
+a {
+    color: var(--clr-link);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
 /**********************************/
 /* 2. Navbar
 /**********************************/
@@ -312,3 +329,6 @@ section {
 /**********************************/
 /* 8. Footer
 /**********************************/
+.footer-text__source {
+    margin-bottom: 3.2rem;
+}
