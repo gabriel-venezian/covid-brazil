@@ -193,6 +193,18 @@ a {
     margin: 3rem 1.6rem;
 }
 
+@media screen and (min-width: 960px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1170px) {
+    .container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 /**********************************/
 /* 5. State Select
 /**********************************/
@@ -274,6 +286,18 @@ a {
     display: none;
 }
 
+@media screen and (min-width: 960px) {
+    .state-select {
+        grid-column: 1 / -1;
+    }
+}
+
+@media screen and (min-width: 1170px) {
+    .state-select {
+        grid-column: 1;
+    }
+}
+
 /**********************************/
 /* 6. Status
 /**********************************/
@@ -313,6 +337,12 @@ a {
     transition: var(--transition);
 }
 
+@media screen and (min-width: 1170px) {
+ .status:nth-of-type(1) {
+     grid-column: 1;
+ }   
+}
+
 /**********************************/
 /* 7. Data Box
 /**********************************/
@@ -324,6 +354,24 @@ a {
 
 .data-box__description {
     font: var(--ts-normal-text);
+}
+
+@media screen and (min-width: 960px) {
+    .data-box--30 {
+        grid-column: span 2;
+    }
+}
+
+@media screen and (min-width: 1170px) {
+    .data-box--30 {
+        grid-column: span 3;
+        grid-row: span 2;
+    }
+
+    .data-box--deaths, .data-box--confirmed,
+    .data-box--vaccinated-abs, .data-box--vaccinated-day {
+        grid-column: span 2;
+    }
 }
 
 /**********************************/
