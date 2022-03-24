@@ -11,16 +11,16 @@ const _elements = {
     deaths: document.querySelector(".info__total--deaths"),
     deathsDescription: document.querySelector(".data-box__description"),
     vaccinated1: document.querySelector(".info__total--vaccinated-1"),
-    vaccinated2: document.querySelector(".info__total--vaccinated-2"),
-}
+    vaccinated2: document.querySelector(".info__total--vaccinated-2")
+};
 
 const _data = {
-    id: "brazil=true",
+    id: "brasil=true",
     vaccinatedInfo: undefined,
     vaccinated: undefined,
     confirmed: undefined,
-    deaths: undefined,
-}
+    deaths: undefined
+};
 
 const _charts = {};
 
@@ -43,6 +43,8 @@ _elements.selectOptions.forEach(item => {
         _elements.selectStateSelected.innerText = item.innerText;
         _data.id = item.getAttribute("data-id");
         _elements.stateSelectToggle.dispatchEvent(new Event("click"));
+
+        loadData(_data.id);
     });
 });
 
@@ -60,13 +62,32 @@ _elements.selectSearchBox.addEventListener("keyup", (e) => {
   };
 });
 
-const request = (api, id) => {
+const request = async (api, id) => {
+  try {
 
-}
+  const url = api + id;
 
-const loadData = (id) => {
+    const data = await fetch(url);
+    const json = await data.json();
 
-}
+    return json;
+  } catch (e) {
+    console.log(e);
+  };
+};
+
+const loadData = async (id) => {
+  _elements.loading.classList.remove("loading--hide");
+
+  _data.confirmed = await request(_api.confirmed, id);
+  _data.deaths = await request(_api.deaths, id);
+  _data.vaccinated = await request(_api.vaccinated, id);
+  _data.vaccinatedInfo = await request(_api.vaccinatedInfo, "");
+
+  updateCards();
+
+  _elements.loading.classList.add("loading--hide");
+};
 
 const createBasicChart = (element, config) => {
 
@@ -85,8 +106,18 @@ const createCharts = () => {
 }
 
 const updateCards = () => {
+  const uf = _ufs[_data.id];
 
-}
+  _elements.confirmed.innerText = _data.confirmed[_data.confirmed.length -1]["total_de_casos"];
+  _elements.deaths.innerText = _data.deaths[_data.deaths.length -1]["total_de_mortes"];
+  _elements.vaccinated1.innerText = _data.vaccinatedInfo.extras[uf].info["total-hoje-dose-1"];
+  _elements.vaccinated2.innerText = _data.vaccinatedInfo.extras[uf].info["total-hoje-dose-2"] + _data.vaccinatedInfo.extras[uf].info["total-hoje-dose-unica"];
+
+  _elements.confirmed.innerText = Number(_elements.confirmed.innerText.toLocaleString());
+  _elements.confirmed.innerText = Number(_elements.deaths.innerText.toLocaleString());
+  _elements.vaccinated1.innerText = Number(_elements.vaccinated1.innerText).toLocaleString();
+  _elements.vaccinated2.innerText = Number(_elements.vaccinated2.innerText).toLocaleString();
+};
 
 const updateCharts = () => {
 
